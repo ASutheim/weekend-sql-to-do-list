@@ -32,15 +32,16 @@ function renderTasks(tasks) {
     let task = tasks[i];
     if (task.complete === false) {
       $("#task-table").append(`
-        <tr data-id=${task.id}>
+        <tr id="incomplete-task" data-id=${task.id}>
         <td>${task.task}</td>
         <td><button class='complete-btn'>Complete</button></td>
         <td><button class='delete-btn'>Delete</button></td>
       </tr>`);
     } else if (task.complete === true) {
       $("#task-table").append(`
-        <tr data-id=${task.id}>
+        <tr id="complete-task" data-id=${task.id}>
         <td>${task.task}</td>
+        <td>Good job! :D</td>
         <td><button class='delete-btn'>Delete</button></td>
       </tr>`);
     }
