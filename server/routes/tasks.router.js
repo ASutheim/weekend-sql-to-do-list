@@ -16,4 +16,21 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  let newTask = req.body;
+  console.log("New task post request:", req.body);
+  let queryText = `INSERT INTO "task-list" ("task") VALUES ($1);`;
+  let values = [newTask.task];
+
+  pool
+    .query(queryText, values)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("Query:", queryText, "Error:", error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

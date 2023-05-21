@@ -40,7 +40,18 @@ function renderTasks(tasks) {
 }
 
 function handleSubmit() {
-  console.log("inside submit function");
+  let newTask = {
+    task: $("#task-input").val(),
+  };
+  console.log("inside submit function", newTask);
+  $.ajax({
+    type: "POST",
+    url: "/tasks",
+    data: newTask,
+  }).then(function (response) {
+    $("#task-input").val("");
+    getTasks();
+  });
 }
 
 function completeTask() {
