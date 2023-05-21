@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="vendors/jquery.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
     
     <title>Weekend Project: A To-Do List App!</title>
 </head>
 <body>
-    Hello to do list!
+    <h1>A TO DO LIST:</h1>
+
+
+    <p>You've got stuff to do! Make a list!</p>
+    
+    <form><input type="text" id="task-input" size="50" placeholder="Describe the task!">
+
+        <button type="button" id="submit-btn">Submit</button></form>
+
+</br>
+    <table id="task-table">
+        <tr>
+            <th>Task</th> <th>Complete</th> <th>Delete</th>
+        </tr>
+    
+    </table>
 </body>
 </html>
