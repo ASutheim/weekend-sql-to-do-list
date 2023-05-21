@@ -41,7 +41,7 @@ function renderTasks(tasks) {
       $("#table-body").append(`
         <tr id="complete-task" data-id=${task.id}>
         <td>${task.task}</td>
-        <td>YAY YOU!</td>
+        <td id="blossom">🌼</td>
         <td><button class='delete-btn'>Delete</button></td>
       </tr>`);
     }
