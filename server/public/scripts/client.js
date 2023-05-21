@@ -46,7 +46,8 @@ function renderTasks(tasks) {
     }
   }
 }
-function handleSubmit() {
+function handleSubmit(event) {
+  event.preventDefault();
   let newTask = {
     task: $("#task-input").val(),
   };
