@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 function clickHandlers() {
-  $("#submit-btn").on("click", handleSubmit);
+  $("#submit-btn").on("click", ".submit-btn", handleSubmit);
   $("#task-table").on("click", ".delete-btn", handleDelete);
   $("#task-table").on("click", ".complete-btn", completeTask);
 }
@@ -30,46 +30,54 @@ function renderTasks(tasks) {
   $("#task-table").empty();
   for (let i = 0; i < tasks.length; i += 1) {
     let task = tasks[i];
-    $("#task-table").append(`
+    if (task.complete === false) {
+      $("#task-table").append(`
         <tr data-id=${task.id}>
         <td>${task.task}</td>
         <td><button class='complete-btn'>Complete</button></td>
         <td><button class='delete-btn'>Delete</button></td>
       </tr>`);
+    } else if (task.complete === true) {
+      $("#task-table").append(`
+        <tr data-id=${task.id}>
+        <td>${task.task}</td>
+        <td><button class='delete-btn'>Delete</button></td>
+      </tr>`);
+    }
   }
-}
 
-function handleSubmit() {
-  let newTask = {
-    task: $("#task-input").val(),
-  };
-  console.log("inside submit function", newTask);
-  $.ajax({
-    type: "POST",
-    url: "/tasks",
-    data: newTask,
-  }).then(function (response) {
-    $("#task-input").val("");
-    getTasks();
-  });
-}
-
-function completeTask() {
-  console.log("inside complete task function");
-}
-
-function handleDelete() {
-  let taskToDelete = $(this).closest("tr").data("id");
-  console.log("inside handle delete function, task to delete:", taskToDelete);
-
-  $.ajax({
-    type: "DELETE",
-    url: `/tasks/${taskToDelete}`,
-  })
-    .then(function (response) {
+  function handleSubmit() {
+    let newTask = {
+      task: $("#task-input").val(),
+    };
+    console.log("inside submit function", newTask);
+    $.ajax({
+      type: "POST",
+      url: "/tasks",
+      data: newTask,
+    }).then(function (response) {
+      $("#task-input").val("");
       getTasks();
-    })
-    .catch(function (error) {
-      console.log("Error with delete function: ", error);
     });
+  }
+
+  function completeTask() {
+    console.log("inside complete task function");
+  }
+
+  function handleDelete() {
+    let taskToDelete = $(this).closest("tr").data("id");
+    console.log("inside handle delete function, task to delete:", taskToDelete);
+
+    $.ajax({
+      type: "DELETE",
+      url: `/tasks/${taskToDelete}`,
+    })
+      .then(function (response) {
+        getTasks();
+      })
+      .catch(function (error) {
+        console.log("Error with delete function: ", error);
+      });
+  }
 }
