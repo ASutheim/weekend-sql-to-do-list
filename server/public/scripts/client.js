@@ -59,5 +59,17 @@ function completeTask() {
 }
 
 function handleDelete() {
-  console.log("inside handle delete function");
+  let taskToDelete = $(this).closest("tr").data("id");
+  console.log("inside handle delete function, task to delete:", taskToDelete);
+
+  $.ajax({
+    type: "DELETE",
+    url: `/tasks/${taskToDelete}`,
+  })
+    .then(function (response) {
+      getTasks();
+    })
+    .catch(function (error) {
+      console.log("Error with delete function: ", error);
+    });
 }
