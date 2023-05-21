@@ -1,32 +1,35 @@
 body {
-  background-color: rgb(171, 171, 141);
+  background-image: url("./images/background.jpg");
+  background-size: cover;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 h1 {
-  text-align: center
-  background:
-  ;
-}
-
-p {
+  border: solid 1px black;
   text-align: center;
+  background-color: rgb(241, 241, 78);
+  padding: 20px;
 }
 
 #input-container {
   display: flex;
   justify-content: center;
+  padding: 30px;
+}
+
+#task-table {
+  background-color: rgba(241, 241, 78, 0.625);
 }
 
 #complete-task {
-  background-color: rgb(172, 194, 147);
+  background-color: rgba(172, 223, 113, 0.843);
 }
 
 #task-column {
   min-width: 300px;
 }
 .complete-btn {
-  background-color: rgba(172, 194, 147, 0.34);
+  background-color: rgba(147, 191, 97, 0.843);
 }
 
 .delete-btn {
