@@ -8,6 +8,6 @@ INSERT INTO "task-list" ("task")
 VALUES
 ('weed garden'), 
 ('fold laundry'), 
-('go grocery shopping')
-('meal prep for the week')
+('go grocery shopping'),
+('meal prep for the week'),
 ('walk the dog')
